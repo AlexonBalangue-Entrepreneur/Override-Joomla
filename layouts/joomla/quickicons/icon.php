@@ -1,0 +1,27 @@
+<?php
+/**
+ * @package     Joomla.Site
+ * @subpackage  Layout
+ *
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+defined('JPATH_BASE') or die;
+
+$id      = empty($displayData['id']) ? '' : (' id="' . $displayData['id'] . '"');
+$target  = empty($displayData['target']) ? '' : (' target="' . $displayData['target'] . '"');
+$onclick = empty($displayData['onclick']) ? '' : (' onclick="' . $displayData['onclick'] . '"');
+$title   = empty($displayData['title']) ? '' : (' title="' . $this->escape($displayData['title']) . '"');
+$text    = empty($displayData['text']) ? '' : ('<span>' . $displayData['text'] . '</span>')
+
+?>
+<div class="row">
+	<div class="container-fluid"<?php echo $id; ?>>
+		<div class="col col-12">
+			<a href="<?php echo $displayData['link']; ?>"<?php echo $target . $onclick . $title; ?>>
+				<span class="fal fa-<?php echo $displayData['image']; ?>"></span> <?php echo $text; ?>
+			</a>
+		</div>
+	</div>
+</div>
