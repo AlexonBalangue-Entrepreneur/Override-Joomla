@@ -23,9 +23,7 @@ JHtml::_('behavior.caption');
 <div class="<?php echo $this->pageclass_sfx; ?>" itemscope itemtype="https://schema.org/Article">
 	<meta itemprop="inLanguage" content="<?php echo ($this->item->language === '*') ? JFactory::getConfig()->get('language') : $this->item->language; ?>" />
 	<?php if ($this->params->get('show_page_heading')) : ?>
-	<div class="display-5">
 		<h1> <?php echo $this->escape($this->params->get('page_heading')); ?> </h1>
-	</div>
 	<?php endif;
 	if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->paginationposition && $this->item->paginationrelative)
 	{
@@ -44,7 +42,6 @@ JHtml::_('behavior.caption');
 		<div class="clearfix"> </div>
 	<?php endif; ?>
 	<?php if ($params->get('show_title') || $params->get('show_author')) : ?>
-	<div class="display-5">
 		<?php if ($params->get('show_title')) : ?>
 			<h2 itemprop="name">
 				<?php echo $this->escape($this->item->title); ?>
@@ -59,7 +56,6 @@ JHtml::_('behavior.caption');
 		<?php if ((strtotime($this->item->publish_down) < strtotime(JFactory::getDate())) && $this->item->publish_down != JFactory::getDbo()->getNullDate()) : ?>
 			<span class="label label-warning"><?php echo JText::_('JEXPIRED'); ?></span>
 		<?php endif; ?>
-	</div>
 	<?php endif; ?>
 	<?php if (!$this->print) : ?>
 		<?php if ($canEdit || $params->get('show_print_icon') || $params->get('show_email_icon')) : ?>

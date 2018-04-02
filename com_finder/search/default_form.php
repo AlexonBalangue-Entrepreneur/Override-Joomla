@@ -72,7 +72,7 @@ jQuery(function() {";
 		<label for="q" class="sr-only">
 			<?php echo JText::_('COM_FINDER_SEARCH_TERMS'); ?>
 		</label>
-		<span class="input-group-addon" id="form-searching"><i class="fa fa-search"></i></span>
+		<span class="input-group-addon" id="form-searching"><i class="fal fa-search"></i></span>
 		<input type="text" name="q" id="q" size="30" placeholder="<?php echo JText::_('JSEARCH_FILTER_SUBMIT');?>" value="<?php echo $this->escape($this->query->input); ?>" class="form-control" aria-describedby="form-searching">
 		<div class="input-group-btn">
 			<?php if ($this->escape($this->query->input) != '' || $this->params->get('allow_empty_search')):?>

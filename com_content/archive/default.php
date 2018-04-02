@@ -15,11 +15,9 @@ JHtml::_('behavior.caption');
 ?>
 <div class="<?php echo $this->pageclass_sfx;?>">
 <?php if ($this->params->get('show_page_heading')) : ?>
-<div class="display-5">
 <h1>
 	<?php echo $this->escape($this->params->get('page_heading')); ?>
 </h1>
-</div>
 <?php endif; ?>
 <form id="adminForm" action="<?php echo JRoute::_('index.php')?>" method="post" class="form-inline">
 

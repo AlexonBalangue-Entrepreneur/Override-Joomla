@@ -23,7 +23,7 @@ $descriptionImage = $this->params->get('all_tags_description_image');
 	<?php endif; ?>
 	<p>
 	<?php if ($this->params->get('all_tags_show_description_image') && !empty($descriptionImage)): ?>
-		<?php echo '<img src="' . $descriptionImage . '" alt="--" width="90" height="90">'; ?>
+		<?php echo '<img src="' . $descriptionImage . '" alt="'.$description.'" width="90" height="90">'; ?>
 	<?php endif; ?>
 	<?php if (!empty($description)): ?>
 		<?php echo $description; ?>

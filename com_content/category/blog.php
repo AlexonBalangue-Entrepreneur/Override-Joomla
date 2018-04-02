@@ -15,9 +15,9 @@ JHtml::_('behavior.caption');
 ?>
 <div class="row<?php /*echo $this->pageclass_sfx;*/ ?>" itemscope itemtype="https://schema.org/Blog">
 	<?php if ($this->params->get('show_page_heading')) : ?>
-		<div class="display-5">
+		
 			<h1> <?php echo $this->escape($this->params->get('page_heading')); ?> </h1>
-		</div>
+	
 	<?php endif; ?>
 
 	<?php if ($this->params->get('show_category_title', 1) or $this->params->get('page_subheading')) : ?>
@@ -50,7 +50,7 @@ JHtml::_('behavior.caption');
 
 	<?php if (empty($this->lead_items) && empty($this->link_items) && empty($this->intro_items)) : ?>
 		<?php if ($this->params->get('show_no_articles', 1)) : ?>
-			<p class="alert alert-warning"><i class="fa fa-warning fa-2x fa-spin"></i><?php echo JText::_('COM_CONTENT_NO_ARTICLES'); ?></p>
+			<p class="alert alert-warning"><i class="fal fa-warning fa-2x fa-spin"></i><?php echo JText::_('COM_CONTENT_NO_ARTICLES'); ?></p>
 		<?php endif; ?>
 	<?php endif; ?>
 

@@ -16,7 +16,7 @@ $params = $this->params;
 	<?php foreach ($this->items as $i => $item) : ?>
 		<?php $info = $item->params->get('info_block_position', 0); ?>
 		<div class="row<?php echo $i % 2; ?>" itemscope itemtype="https://schema.org/Article">
-			<div class="display-5">
+			
 				<h2 itemprop="name">
 					<?php if ($params->get('link_titles')) : ?>
 						<a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($item->slug, $item->catid, $item->language)); ?>" itemprop="url">
@@ -37,7 +37,6 @@ $params = $this->params;
 						<?php endif; ?>
 					</div>
 				<?php endif; ?>
-			</div>
 		<?php $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_date') || $params->get('show_create_date')
 			|| $params->get('show_hits') || $params->get('show_category') || $params->get('show_parent_category')); ?>
 		<?php if ($useDefList && ($info == 0 || $info == 2)) : ?>
@@ -72,7 +71,7 @@ $params = $this->params;
 
 				<?php if ($params->get('show_publish_date')) : ?>
 					<dd>
-							<i class="fa fa-calendar"></i>
+							<i class="fal fa-calendar"></i>
 							<time datetime="<?php echo JHtml::_('date', $item->publish_up, 'c'); ?>" itemprop="datePublished">
 								<?php echo JText::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', JHtml::_('date', $item->publish_up, JText::_('DATE_FORMAT_LC3'))); ?>
 							</time>
@@ -82,7 +81,7 @@ $params = $this->params;
 				<?php if ($info == 0) : ?>
 					<?php if ($params->get('show_modify_date')) : ?>
 						<dd>
-								<i class="fa fa-calendar"></i>
+								<i class="fal fa-calendar"></i>
 								<time datetime="<?php echo JHtml::_('date', $item->modified, 'c'); ?>" itemprop="dateModified">
 									<?php echo JText::sprintf('COM_CONTENT_LAST_UPDATED', JHtml::_('date', $item->modified, JText::_('DATE_FORMAT_LC3'))); ?>
 								</time>
@@ -90,7 +89,7 @@ $params = $this->params;
 					<?php endif; ?>
 					<?php if ($params->get('show_create_date')) : ?>
 						<dd>
-								<i class="fa fa-calendar"></i>
+								<i class="fal fa-calendar"></i>
 								<time datetime="<?php echo JHtml::_('date', $item->created, 'c'); ?>" itemprop="dateCreated">
 									<?php echo JText::sprintf('COM_CONTENT_CREATED_DATE_ON', JHtml::_('date', $item->created, JText::_('DATE_FORMAT_LC3'))); ?>
 								</time>
@@ -100,7 +99,7 @@ $params = $this->params;
 					<?php if ($params->get('show_hits')) : ?>
 						<dd>
 							<div class="hits">
-								<i class="fa fa-eye"></i> 
+								<i class="fal fa-eye"></i> 
 								<meta itemprop="interactionCount" content="UserPageVisits:<?php echo $item->hits; ?>" />
 								<?php echo JText::sprintf('COM_CONTENT_ARTICLE_HITS', $item->hits); ?>
 							</div>
@@ -151,7 +150,7 @@ $params = $this->params;
 					<?php endif; ?>
 					<?php if ($params->get('show_publish_date')) : ?>
 						<dd>
-								<i class="fa fa-calendar"></i>
+								<i class="fal fa-calendar"></i>
 								<time datetime="<?php echo JHtml::_('date', $item->publish_up, 'c'); ?>" itemprop="datePublished">
 									<?php echo JText::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', JHtml::_('date', $item->publish_up, JText::_('DATE_FORMAT_LC3'))); ?>
 								</time>
@@ -161,7 +160,7 @@ $params = $this->params;
 
 				<?php if ($params->get('show_create_date')) : ?>
 					<dd>
-							<i class="fa fa-calendar"></i>
+							<i class="fal fa-calendar"></i>
 							<time datetime="<?php echo JHtml::_('date', $item->created, 'c'); ?>" itemprop="dateCreated">
 								<?php echo JText::sprintf('COM_CONTENT_CREATED_DATE_ON', JHtml::_('date', $item->modified, JText::_('DATE_FORMAT_LC3'))); ?>
 							</time>
@@ -169,7 +168,7 @@ $params = $this->params;
 				<?php endif; ?>
 				<?php if ($params->get('show_modify_date')) : ?>
 					<dd>
-							<i class="fa fa-calendar"></i>
+							<i class="fal fa-calendar"></i>
 							<time datetime="<?php echo JHtml::_('date', $item->modified, 'c'); ?>" itemprop="dateModified">
 								<?php echo JText::sprintf('COM_CONTENT_LAST_UPDATED', JHtml::_('date', $item->modified, JText::_('DATE_FORMAT_LC3'))); ?>
 							</time>
@@ -177,7 +176,7 @@ $params = $this->params;
 				<?php endif; ?>
 				<?php if ($params->get('show_hits')) : ?>
 					<dd>
-							<i class="fa fa-eye"></i> 
+							<i class="fal fa-eye"></i> 
 							<meta content="UserPageVisits:<?php echo $item->hits; ?>" itemprop="interactionCount" />
 							<?php echo JText::sprintf('COM_CONTENT_ARTICLE_HITS', $item->hits); ?>
 						

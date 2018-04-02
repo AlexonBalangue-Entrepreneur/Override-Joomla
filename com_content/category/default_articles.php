@@ -36,7 +36,7 @@ if (!empty($this->items))
 <?php if (empty($this->items)) : ?>
 
 	<?php if ($this->params->get('show_no_articles', 1)) : ?>
-	<p class="text-center"><i class="fa fa-warning fa-2x fa-spin"></i><?php echo JText::_('COM_CONTENT_NO_ARTICLES'); ?></p>
+	<p class="text-center"><i class="fal fa-warning fa-2x fa-spin"></i><?php echo JText::_('COM_CONTENT_NO_ARTICLES'); ?></p>
 	<?php endif; ?>
 
 <?php else : ?>

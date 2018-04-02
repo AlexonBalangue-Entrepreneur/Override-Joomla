@@ -39,23 +39,21 @@ JFactory::getDocument()->addScriptDeclaration("
 ?>
 <div class="<?php echo $this->pageclass_sfx; ?>">
 	<?php if ($params->get('show_page_heading')) : ?>
-	<div class="display-5">
 		<h1>
 			<?php echo $this->escape($params->get('page_heading')); ?>
 		</h1>
-	</div>
 	<?php endif; ?>
 
 	<form action="<?php echo JRoute::_('index.php?option=com_content&a_id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="adminForm" class="form-validate form-vertical">
 		<div class="btn-toolbar">
 			<div class="btn-group">
 				<button type="button" class="btn btn-primary" onclick="Joomla.submitbutton('article.save')">
-					<i class="fa check-square-o"></i> <?php echo JText::_('JSAVE') ?>
+					<i class="fal fa-check-square"></i> <?php echo JText::_('JSAVE') ?>
 				</button>
 			</div>
 			<div class="btn-group">
 				<button type="button" class="btn btn-danger" onclick="Joomla.submitbutton('article.cancel')">
-					<i class="fa fa-ban"></i> <?php echo JText::_('JCANCEL') ?>
+					<i class="fal fa-ban"></i> <?php echo JText::_('JCANCEL') ?>
 				</button>
 			</div>
 			<?php if ($params->get('save_history', 0) && $this->item->id) : ?>

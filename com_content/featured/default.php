@@ -18,11 +18,9 @@ JHtml::_('behavior.caption');
 ?>
 <div class="row" itemscope itemtype="https://schema.org/Blog">
 <?php if ($this->params->get('show_page_heading') != 0) : ?>
-<div class="display-5">
 	<h1>
 	<?php echo $this->escape($this->params->get('page_heading')); ?>
 	</h1>
-</div>
 <?php endif; ?>
 
 <?php $leadingcount = 0; ?>

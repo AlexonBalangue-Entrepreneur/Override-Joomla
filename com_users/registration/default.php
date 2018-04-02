@@ -14,9 +14,7 @@ JHtml::_('behavior.formvalidator');
 ?>
 <div class="<?php echo $this->pageclass_sfx?>">
 	<?php if ($this->params->get('show_page_heading')) : ?>
-		<div class="display-5">
 			<h1><?php echo $this->escape($this->params->get('page_heading')); ?></h1>
-		</div>
 	<?php endif; ?>
 
 	<form id="member-registration" action="<?php echo JRoute::_('index.php?option=com_users&task=registration.register'); ?>" method="post" class="form-validate form-inline" enctype="multipart/form-data">

@@ -14,11 +14,9 @@ JHtml::_('behavior.formvalidator');
 ?>
 <div class="<?php echo $this->pageclass_sfx; ?>">
 	<?php if ($this->params->get('show_page_heading')) : ?>
-	<div class="display-5">
 		<h1>
 			<?php echo $this->escape($this->params->get('page_heading')); ?>
 		</h1>
-	</div>
 	<?php endif; ?>
 
 	<?php if (($this->params->get('logindescription_show') == 1 && str_replace(' ', '', $this->params->get('login_description')) != '') || $this->params->get('login_image') != '') : ?>
