@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_RDSUBS_MENU_CATEGORY">
+		<message>
+			<![CDATA[COM_RDSUBS_MENU_CATEGORY_DESC]]>
+		</message>
+	</layout>
+
+	<!-- Add fields to the request variables for the layout. -->
+
+	<fields name="request">
+		<fieldset name="request"
+				  addfieldpath="/administrator/components/com_rdsubs/models/fields">
+			<field name="id" type="rd_categories"
+				   required="true"
+				   label="COM_RDSUBS_SELECT_CATEGORY_LABEL" description="COM_RDSUBS_SELECT_CATEGORY_DESC" />
+		</fieldset>
+	</fields>
+
+	<fields name="params">
+		<fieldset name="basic" label="COM_RDSUBS_FIELDSET_BASIC">
+			<field name="display_num" type="text" default="" class="input-mini"
+				   label="COM_RDSUBS_DISPLAY_NUM" description="COM_RDSUBS_DISPLAY_NUM_DESC" />
+
+			<field name="num_columns" type="list" default="" class="input-small"
+				   label="JGLOBAL_NUM_COLUMNS_LABEL" description="COM_RDSUBS_NUM_COLUMNS_DESC">
+				<option value="">JDEFAULT</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="6">6</option>
+			</field>
+		</fieldset>
+	</fields>
+</metadata>

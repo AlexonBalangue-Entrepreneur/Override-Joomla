@@ -34,12 +34,12 @@ $starImageOff = 'star-half';
 $img = '';
 for ($i = 0; $i < $rating; $i++)
 {
-	$img .= $starImageOn;
+	$img .= '<i class="fal fa-'.$starImageOn.'" fa-2x"></i>';
 }
 
 for ($i = $rating; $i < 5; $i++)
 {
-	$img .= $starImageOff;
+	$img .= '<i class="fal fa-'.$starImageOff.'" fa-2x"></i>';
 }
 $docs = JFactory::getDocument(); 
 $page_title = $docs->getTitle();
@@ -51,5 +51,5 @@ $page_title = $docs->getTitle();
 		<meta itemprop="worstRating" content="0" />
 		<script type="application/ld+json">{"@context": "http://schema.org/", "@type": "Product", "name": "<?php echo $page_title; ?>", "aggregateRating": {"@type": "AggregateRating", "ratingValue" : "<?php echo $rating; ?>", "ratingCount": "<?php echo (int) $row->rating_count; ?>", "reviewCount": "5"}}</script>
 	</p>
-	<i class="fal fa-<?php echo $img; ?> fa-2x"></i>
+	<?php echo $img; ?>
 </div>

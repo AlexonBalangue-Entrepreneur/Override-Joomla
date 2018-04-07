@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_RDSUBS_MENU_FILE">
+		<message>
+			<![CDATA[COM_RDSUBS_MENU_FILE_DESC]]>
+		</message>
+	</layout>
+
+	<!-- Add fields to the request variables for the layout. -->
+
+	<fields name="request">
+		<fieldset name="request" addfieldpath="/administrator/components/com_rdsubs/models/fields">
+			<field name="id" type="rd_files"
+				   required="true"
+				   label="COM_RDSUBS_SELECT_FILE_LABEL" description="COM_RDSUBS_SELECT_FILE_DESC" />
+		</fieldset>
+	</fields>
+</metadata>
