@@ -23,15 +23,15 @@ $userid = JFactory::getUser()->id;
 
 <?php if ( ! $userid) : ?>
 	<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="accountLoginForm" id="accountLoginForm" class="form-vertical">
-		<div class="form-check">
-		  <input class="form-check-input" type="checkbox" name="logincreateoption" checked="checked" value="0" id="logincreateoption">
+		<div class="form-check radio">
+		  <input class="form-check-input" type="radio" name="logincreateoption" checked="checked" value="0" id="logincreateoption">
 		  <label class="form-check-label" for="logincreateoption">
 			<?php echo JText::_('COM_RDSUBS_NEW_TO_SITE'); ?>
 		  </label>
 		</div>
 		
-		<div class="form-check">
-		  <input class="form-check-input" type="checkbox" name="logincreateoption" value="1" id="logincreateoption">
+		<div class="form-check radio">
+		  <input class="form-check-input" type="radio" name="logincreateoption" value="1" id="logincreateoption">
 		  <label class="form-check-label" for="logincreateoption">
 			<?php echo JText::_('COM_RDSUBS_RETURNING_CUSTOMER'); ?>
 		  </label>
@@ -79,7 +79,7 @@ $userid = JFactory::getUser()->id;
         <div class="input-group-prepend">
           <div class="input-group-text"><i class="fal fa-user fa-2x"></i></div>
         </div>
-        <input type="text" name="username" class="form-control" id="username" placeholder="<?php echo JText::_('COM_RDSUBS_USERNAME'); ?>" value="<?php echo isset($this->client->username) ? $this->client->username : ''; ?>" required>
+        <input type="text" name="username" class="form-control" id="username" placeholder="<?php echo JText::_('COM_RDSUBS_USERNAME'); ?>" value="<?php echo isset($this->client->username) ? $this->client->username : ''; ?>">
       </div>
     </div>
     <div class="col-auto">
@@ -88,7 +88,7 @@ $userid = JFactory::getUser()->id;
         <div class="input-group-prepend">
           <div class="input-group-text"><i class="fal fa-lock-alt fa-2x"></i></div>
         </div>
-        <input type="password" name="password" class="form-control" id="password" placeholder="<?php echo JText::_('COM_RDSUBS_PASSWORD'); ?>" value="" required>
+        <input type="password" name="password" class="form-control" id="password" placeholder="<?php echo JText::_('COM_RDSUBS_PASSWORD'); ?>" value="">
       </div>
     </div>
     <div class="col-auto">
@@ -97,7 +97,7 @@ $userid = JFactory::getUser()->id;
         <div class="input-group-prepend">
           <div class="input-group-text"><i class="fal fa-lock-alt fa-2x"></i></div>
         </div>
-        <input type="password" name="password2" class="form-control" id="password2" placeholder="<?php echo JText::_('COM_RDSUBS_RETYPE_PASSWORD'); ?>" value="" required>
+        <input type="password" name="password2" class="form-control" id="password2" placeholder="<?php echo JText::_('COM_RDSUBS_RETYPE_PASSWORD'); ?>" value="">
       </div>
     </div>
     <div class="col-auto">
