@@ -34,12 +34,12 @@ $starImageOff = 'star-half';
 $img = '<i class="fas fa-star fa-2x sr-only"></i>';
 for ($i = 0; $i < $rating; $i++)
 {
-	$img .= '<i class="fal fa-'.$starImageOn.' fa-2x"></i>';
+	$img .= '<i class="fal fa-'.$starImageOn.' fa-2x sr-only"></i>';
 }
 
 for ($i = $rating; $i < 5; $i++)
 {
-	$img .= '<i class="fal fa-'.$starImageOff.' fa-2x"></i>';
+	$img .= '<i class="fal fa-'.$starImageOff.' fa-2x sr-only"></i>';
 }
 $docs = JFactory::getDocument(); 
 $page_title = $docs->getTitle();
