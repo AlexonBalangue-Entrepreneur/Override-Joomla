@@ -3,7 +3,7 @@
  * @package     Joomla.Site
  * @subpackage  Layout
  *
- * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -38,7 +38,7 @@ if (!empty($pages['pages']))
 
 if ($currentPage >= $step)
 {
-	if ($currentPage % $step == 0)
+	if ($currentPage % $step === 0)
 	{
 		$range = ceil($currentPage / $step) + 1;
 	}
@@ -49,24 +49,24 @@ if ($currentPage >= $step)
 }
 ?>
 
-<div class="pagination clearfix text-center">
+<div class="pagination pagination-toolbar clearfix" style="text-align: center;">
 
 	<?php if ($showLimitBox) : ?>
-		<div class="float-right">
+		<div class="limit pull-right">
 			<?php echo JText::_('JGLOBAL_DISPLAY_NUM') . $list['limitfield']; ?>
 		</div>
 	<?php endif; ?>
 
 	<?php if ($showPagesLinks && (!empty($pages))) : ?>
-		<ul class="pagination">
+		<ul class="pagination-list">
 			<?php
 				echo JLayoutHelper::render('joomla.pagination.link', $pages['start']);
 				echo JLayoutHelper::render('joomla.pagination.link', $pages['previous']); ?>
 			<?php foreach ($pages['pages'] as $k => $page) : ?>
 
 				<?php $output = JLayoutHelper::render('joomla.pagination.link', $page); ?>
-				<?php if (in_array($k, range($range * $step - ($step + 1), $range * $step))) : ?>
-					<?php if (($k % $step == 0 || $k == $range * $step - ($step + 1)) && $k != $currentPage && $k != $range * $step - $step) :?>
+				<?php if (in_array($k, range($range * $step - ($step + 1), $range * $step), true)) : ?>
+					<?php if (($k % $step === 0 || $k === $range * $step - ($step + 1)) && $k !== $currentPage && $k !== $range * $step - $step) : ?>
 						<?php $output = preg_replace('#(<a.*?>).*?(</a>)#', '$1...$2', $output); ?>
 					<?php endif; ?>
 				<?php endif; ?>

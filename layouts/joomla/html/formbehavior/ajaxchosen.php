@@ -3,7 +3,7 @@
  * @package     Joomla.Site
  * @subpackage  Layout
  *
- * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -30,8 +30,8 @@ JText::script('JGLOBAL_KEEP_TYPING');
 JText::script('JGLOBAL_LOOKING_FOR');
 
 // Include jQuery
-//JHtml::_('jquery.framework');
-JHtml::_('script', 'jui/ajax-chosen.min.js', false, true, false, false, $debug);
+JHtml::_('jquery.framework');
+JHtml::_('script', 'jui/ajax-chosen.min.js', array('version' => 'auto', 'relative' => true, 'detectDebug' => $debug));
 
 JFactory::getDocument()->addScriptDeclaration(
 	"

@@ -1,9 +1,9 @@
 <?php
 /**
  * @package     Joomla.Site
- * @subpackage  Templates.protostar
+ * @subpackage  Templates.xxx
  *
- * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -102,7 +102,7 @@ function pagination_list_render($list)
 	}
 	if ($currentPage >= $step)
 	{
-		if ($currentPage % $step == 0)
+		if ($currentPage % $step === 0)
 		{
 			$range = ceil($currentPage / $step) + 1;
 		}
@@ -112,18 +112,18 @@ function pagination_list_render($list)
 		}
 	}
 
-	$html = '<ul class="pagination">';
+	$html  = '<nav role="navigation" aria-label="' . JText::_('JLIB_HTML_PAGINATION') . '">';
+	$html .= '<ul class="pagination-list">';
 	$html .= $list['start']['data'];
 	$html .= $list['previous']['data'];
 
 	foreach ($list['pages'] as $k => $page)
 	{
-		if (in_array($k, range($range * $step - ($step + 1), $range * $step)))
+		if ($k !== $currentPage && $k !== $range * $step - $step
+			&& ($k % $step === 0 || $k === $range * $step - ($step + 1))
+			&& in_array($k, range($range * $step - ($step + 1), $range * $step)))
 		{
-			if (($k % $step == 0 || $k == $range * $step - ($step + 1)) && $k != $currentPage && $k != $range * $step - $step)
-			{
-				$page['data'] = preg_replace('#(<a.*?>).*?(</a>)#', '$1...$2', $page['data']);
-			}
+			$page['data'] = preg_replace('#(<a.*?>).*?(</a>)#', '$1...$2', $page['data']);
 		}
 
 		$html .= $page['data'];
@@ -133,6 +133,7 @@ function pagination_list_render($list)
 	$html .= $list['end']['data'];
 
 	$html .= '</ul>';
+	$html .= '</nav>';
 	return $html;
 }
 
@@ -150,37 +151,43 @@ function pagination_item_active(&$item)
 	$class = '';
 
 	// Check for "Start" item
-	if ($item->text == JText::_('JLIB_HTML_START'))
+	if ($item->text === JText::_('JLIB_HTML_START'))
 	{
-		$display = '<span class="fal fa-chevron-double-left"></span>';
+		$display = '<i class="fal fa-angle-double-left" aria-hidden="true"></i>';
+		$aria    = JText::sprintf('JLIB_HTML_GOTO_POSITION', strtolower($item->text));
 	}
 
 	// Check for "Prev" item
-	if ($item->text == JText::_('JPREV'))
+	if ($item->text === JText::_('JPREV'))
 	{
-		$display = '<span class="fal fa-chevron-left"></span>';
+		$display = '<i class="fal fa-angle-left" aria-hidden="true"></i>';
+		$aria    = JText::sprintf('JLIB_HTML_GOTO_POSITION', strtolower($item->text));
 	}
 
 	// Check for "Next" item
-	if ($item->text == JText::_('JNEXT'))
+	if ($item->text === JText::_('JNEXT'))
 	{
-		$display = '<span class="fal fa-chevron-left"></span>';
+		$display = '<i class="fal fa-angle-right" aria-hidden="true"></i>';
+		$aria    = JText::sprintf('JLIB_HTML_GOTO_POSITION', strtolower($item->text));
 	}
 
 	// Check for "End" item
-	if ($item->text == JText::_('JLIB_HTML_END'))
+	if ($item->text === JText::_('JLIB_HTML_END'))
 	{
-		$display = '<span class="fal fa-chevron-double-right"></span>';
+		$display = '<i class="fal fa-angle-double-right" aria-hidden="true"></i>';
+		$aria    = JText::sprintf('JLIB_HTML_GOTO_POSITION', strtolower($item->text));
 	}
 
 	// If the display object isn't set already, just render the item with its text
 	if (!isset($display))
 	{
 		$display = $item->text;
-		$class   = ' class="page-item d-xs-none"';
+		$aria    = JText::sprintf('JLIB_HTML_GOTO_PAGE', $item->text);
+		$class   = ' class="d-none d-sm-block"';
 	}
 
-	return '<li' . $class . '><a title="' . $item->text . '" href="' . $item->link . '" class="page-link">' . $display . '</a></li>';
+	return '<li' . $class . '><a title="' . $item->text . '" href="' . $item->link . '" class="pagenav" aria-label="' . $aria . '">' . $display . '</a></li>';
+
 }
 
 /**
@@ -195,35 +202,37 @@ function pagination_item_active(&$item)
 function pagination_item_inactive(&$item)
 {
 	// Check for "Start" item
-	if ($item->text == JText::_('JLIB_HTML_START'))
+	if ($item->text === JText::_('JLIB_HTML_START'))
 	{
-		return '<li class="page-item disabled"><a class="page-link" href="#"><span class="fal fa-chevron-double-left"></span></a></li>';
+		return '<li class="disabled"><a><i class="fal fa-angle-double-left" aria-hidden="true"></i></a></li>';
 	}
 
 	// Check for "Prev" item
-	if ($item->text == JText::_('JPREV'))
+	if ($item->text === JText::_('JPREV'))
 	{
-		return '<li class="page-item disabled"><a class="page-link" href="#" tabindex="-1"><span class="fal fa-chevron-left"></span></a></li>';
+		return '<li class="disabled"><a><i class="fal fa-angle-left" aria-hidden="true"></i></a></li>';
 	}
 
 	// Check for "Next" item
-	if ($item->text == JText::_('JNEXT'))
+	if ($item->text === JText::_('JNEXT'))
 	{
-		return '<li class="page-item disabled"><a class="page-link" href="#"><span class="fal fa-chevron-right"></span></a></li>';
+		return '<li class="disabled"><a><i class="fal fa-angle-right" aria-hidden="true"></i></a></li>';
 	}
 
 	// Check for "End" item
-	if ($item->text == JText::_('JLIB_HTML_END'))
+	if ($item->text === JText::_('JLIB_HTML_END'))
 	{
-		return '<li class="page-item disabled"><a class="page-link" href="#"><span class="fal fa-chevron-double-right"></span></a></li>';
+		return '<li class="disabled"><a><i class="fal fa-angle-double-right" aria-hidden="true"></i></a></li>';
 	}
 
 	// Check if the item is the active page
-	if (isset($item->active) && ($item->active))
+	if (isset($item->active) && $item->active)
 	{
-		return '<li class="page-item active d-xs-none"><a class="page-link" href="#">' . $item->text . '</a></li>';
+		$aria = JText::sprintf('JLIB_HTML_PAGE_CURRENT', $item->text);
+
+		return '<li class="active d-none d-sm-block"><a aria-current="true" aria-label="' . $aria . '">' . $item->text . '</a></li>';
 	}
 
 	// Doesn't match any other condition, render a normal item
-	return '<li class="page-item disabled d-xs-none"><a class="page-link" href="#">' . $item->text . '</a></li>';
+	return '<li class="disabled d-none d-sm-block"><a>' . $item->text . '</a></li>';
 }

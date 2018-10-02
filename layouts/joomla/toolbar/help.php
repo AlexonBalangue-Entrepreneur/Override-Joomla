@@ -3,7 +3,7 @@
  * @package     Joomla.Site
  * @subpackage  Layout
  *
- * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -15,6 +15,7 @@ $doTask = $displayData['doTask'];
 $text   = $displayData['text'];
 
 ?>
-<button onclick="<?php echo $doTask; ?>" rel="help" class="btn btn-secondary btn-sm">
-	<i class="fal fa-question"></i> <?php echo $text; ?>
+<button onclick="<?php echo $doTask; ?>" rel="help" class="btn btn-small">
+	<span class="icon-question-sign" aria-hidden="true"></span>
+	<?php echo $text; ?>
 </button>

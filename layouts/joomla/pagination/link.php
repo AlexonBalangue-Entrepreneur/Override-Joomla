@@ -3,12 +3,13 @@
  * @package     Joomla.Site
  * @subpackage  Layout
  *
- * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('JPATH_BASE') or die;
 
+/** @var JPaginationObject $item */
 $item = $displayData['data'];
 
 $display = $item->text;
@@ -17,23 +18,23 @@ switch ((string) $item->text)
 {
 	// Check for "Start" item
 	case JText::_('JLIB_HTML_START') :
-		$icon = "fal fa-angle-double-right";
+		$icon = 'icon-backward icon-first';
 		break;
 
 	// Check for "Prev" item
-	case $item->text == JText::_('JPREV') :
+	case $item->text === JText::_('JPREV') :
 		$item->text = JText::_('JPREVIOUS');
-		$icon = "fal fa-angle-double-left";
+		$icon = 'icon-step-backward icon-previous';
 		break;
 
 	// Check for "Next" item
 	case JText::_('JNEXT') :
-		$icon = "fal fa-angle-right";
+		$icon = 'icon-step-forward icon-next';
 		break;
 
 	// Check for "End" item
 	case JText::_('JLIB_HTML_END') :
-		$icon = "fal fa-angle-left";
+		$icon = 'icon-forward icon-last';
 		break;
 
 	default:
@@ -43,7 +44,7 @@ switch ((string) $item->text)
 
 if ($icon !== null)
 {
-	$display = '<i class="' . $icon . '"></i>';
+	$display = '<span class="' . $icon . '"></span>';
 }
 
 if ($displayData['active'])
@@ -72,12 +73,12 @@ if ($displayData['active'])
 }
 else
 {
-	$class = (property_exists($item, 'page-item active') && $item->active) ? 'page-item active' : 'page-item disabled';
+	$class = (property_exists($item, 'active') && $item->active) ? 'active' : 'disabled';
 }
 ?>
 <?php if ($displayData['active']) : ?>
 	<li>
-		<a class="<?php echo implode(' ', $cssClasses); ?>" <?php echo $title; ?> href="#" onclick="<?php echo $onClick; ?>">
+		<a <?php echo $cssClasses ? 'class="' . implode(' ', $cssClasses) . '"' : ''; ?> <?php echo $title; ?> href="#" onclick="<?php echo $onClick; ?>">
 			<?php echo $display; ?>
 		</a>
 	</li>

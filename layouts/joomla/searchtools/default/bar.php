@@ -3,7 +3,7 @@
  * @package     Joomla.Site
  * @subpackage  Layout
  *
- * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -30,27 +30,31 @@ $filters = $data['view']->filterForm->getGroup('filter');
 
 <?php if (!empty($filters['filter_search'])) : ?>
 	<?php if ($searchButton) : ?>
-		<label for="filter_search" class="sr-only">
-			<?php echo JText::_('JSEARCH_FILTER'); ?>
+		<label for="filter_search" class="element-invisible">
+			<?php if (isset($filters['filter_search']->label)) : ?>
+				<?php echo JText::_($filters['filter_search']->label); ?>
+			<?php else : ?>
+				<?php echo JText::_('JSEARCH_FILTER'); ?>
+			<?php endif; ?>
 		</label>
-		<div class="btn-group">
+		<div class="btn-wrapper input-append">
 			<?php echo $filters['filter_search']->input; ?>
 			<?php if ($filters['filter_search']->description) : ?>
 				<?php JHtmlBootstrap::tooltip('#filter_search', array('title' => JText::_($filters['filter_search']->description))); ?>
 			<?php endif; ?>
-			<button type="submit" class="btn btn-info hasTooltip" title="<?php echo JHtml::tooltipText('JSEARCH_FILTER_SUBMIT'); ?>">
-				<i class="fal fa-search"></i>
+			<button type="submit" class="btn hasTooltip" title="<?php echo JHtml::_('tooltipText', 'JSEARCH_FILTER_SUBMIT'); ?>" aria-label="<?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?>">
+				<span class="icon-search" aria-hidden="true"></span>
 			</button>
 		</div>
 		<?php if ($filterButton) : ?>
-			<div class="d-xs-none">
-				<button type="button" class="btn btn-secondary hasTooltip" title="<?php echo JHtml::tooltipText('JSEARCH_TOOLS_DESC'); ?>">
-					<?php echo JText::_('JSEARCH_TOOLS');?> <span class="fal fa-caret-down"></span>
+			<div class="btn-wrapper hidden-phone">
+				<button type="button" class="btn hasTooltip js-stools-btn-filter" title="<?php echo JHtml::_('tooltipText', 'JSEARCH_TOOLS_DESC'); ?>">
+					<?php echo JText::_('JSEARCH_TOOLS');?> <span class="caret"></span>
 				</button>
 			</div>
 		<?php endif; ?>
-		<div>
-			<button type="button" class="btn btn-secondary hasTooltip" title="<?php echo JHtml::tooltipText('JSEARCH_FILTER_CLEAR'); ?>">
+		<div class="btn-wrapper">
+			<button type="button" class="btn hasTooltip js-stools-btn-clear" title="<?php echo JHtml::_('tooltipText', 'JSEARCH_FILTER_CLEAR'); ?>">
 				<?php echo JText::_('JSEARCH_FILTER_CLEAR');?>
 			</button>
 		</div>

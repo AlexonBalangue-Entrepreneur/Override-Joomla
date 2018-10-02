@@ -3,7 +3,7 @@
  * @package     Joomla.Site
  * @subpackage  Layout
  *
- * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -21,16 +21,16 @@ extract($displayData);
 
 if (!empty($options['showonEnabled']))
 {
-	//JHtml::_('jquery.framework');
-	JHtml::_('script', 'jui/cms.js', false, true);
+	JHtml::_('jquery.framework');
+	JHtml::_('script', 'jui/cms.js', array('version' => 'auto', 'relative' => true));
 }
 
 $class = empty($options['class']) ? '' : ' ' . $options['class'];
 $rel   = empty($options['rel']) ? '' : ' ' . $options['rel'];
 ?>
-<div class="form-group<?php echo $class; ?>"<?php echo $rel; ?>>
+<div class="control-group<?php echo $class; ?>"<?php echo $rel; ?>>
 	<?php if (empty($options['hiddenLabel'])) : ?>
-		<?php echo $label; ?>
+		<div class="control-label"><?php echo $label; ?></div>
 	<?php endif; ?>
-	<?php echo $input; ?>
+	<div class="controls"><?php echo $input; ?></div>
 </div>

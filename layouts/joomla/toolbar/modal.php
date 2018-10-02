@@ -3,7 +3,7 @@
  * @package     Joomla.Site
  * @subpackage  Layout
  *
- * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -22,10 +22,11 @@ JHtml::_('behavior.core');
  */
 
 $selector = $displayData['selector'];
-$class    = isset($displayData['class']) ? $displayData['class'] : 'btn btn-secondary btn-sm';
-$icon     = isset($displayData['icon']) ? $displayData['icon'] : 'external-link';
+$class    = isset($displayData['class']) ? $displayData['class'] : 'btn btn-small';
+$icon     = isset($displayData['icon']) ? $displayData['icon'] : 'out-3';
 $text     = isset($displayData['text']) ? $displayData['text'] : '';
 ?>
 <button class="<?php echo $class; ?>" data-toggle="modal" data-target="#<?php echo $selector; ?>">
-	<i class="fal fa-<?php echo $icon; ?>"></i> <?php echo $text; ?>
+	<span class="icon-<?php echo $icon; ?>" aria-hidden="true"></span>
+	<?php echo $text; ?>
 </button>

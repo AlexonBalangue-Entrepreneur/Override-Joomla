@@ -3,7 +3,7 @@
  * @package     Joomla.Site
  * @subpackage  Layout
  *
- * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -16,12 +16,10 @@ $title   = empty($displayData['title']) ? '' : (' title="' . $this->escape($disp
 $text    = empty($displayData['text']) ? '' : ('<span>' . $displayData['text'] . '</span>')
 
 ?>
-<div class="row">
-	<div class="container-fluid"<?php echo $id; ?>>
-		<div class="col col-12">
-			<a href="<?php echo $displayData['link']; ?>"<?php echo $target . $onclick . $title; ?>>
-				<span class="fal fa-<?php echo $displayData['image']; ?>"></span> <?php echo $text; ?>
-			</a>
-		</div>
+<div class="row-fluid"<?php echo $id; ?>>
+	<div class="span12">
+		<a href="<?php echo $displayData['link']; ?>"<?php echo $target . $onclick . $title; ?>>
+			<span class="icon-<?php echo $displayData['image']; ?>" aria-hidden="true"></span> <?php echo $text; ?>
+		</a>
 	</div>
 </div>

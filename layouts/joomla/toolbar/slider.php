@@ -3,7 +3,7 @@
  * @package     Joomla.Site
  * @subpackage  Layout
  *
- * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -17,6 +17,7 @@ $text    = $displayData['text'];
 $name    = $displayData['name'];
 $onClose = $displayData['onClose'];
 ?>
-<button onclick="<?php echo $doTask; ?>" class="btn btn-secondary btn-sm" data-toggle="collapse" data-target="#collapse-<?php echo $name; ?>"<?php echo $onClose; ?>>
-	<i class="fal fa-cog"></i> <?php echo $text; ?>
+<button onclick="<?php echo $doTask; ?>" class="btn btn-small" data-toggle="collapse" data-target="#collapse-<?php echo $name; ?>"<?php echo $onClose; ?>>
+	<span class="icon-cog" aria-hidden="true"></span>
+	<?php echo $text; ?>
 </button>
