@@ -58,7 +58,7 @@ else
 		$iUrl   = isset($feed->image) ? $feed->image : null;
 		$iTitle = isset($feed->imagetitle) ? $feed->imagetitle : null;
 		?>
-		<div style="direction: <?php echo $rssrtl ? 'rtl' :'ltr'; ?>; text-align: <?php echo $rssrtl ? 'right' :'left'; ?> !important" class="feed<?php echo $moduleclass_sfx; ?>">
+		<div style="direction: <?php echo $rssrtl ? 'rtl' :'ltr'; ?>; text-align: <?php echo $rssrtl ? 'right' :'left'; ?> !important">
 		<?php
 		// Feed description
 		if ($feed->title !== null && $params->get('rsstitle', 1))
@@ -102,14 +102,15 @@ else
 			?>
 				<li>
 					<?php if (!empty($uri)) : ?>
-						<span class="feed-link">
+						<span>
 						<a href="<?php echo htmlspecialchars($uri, ENT_COMPAT, 'UTF-8'); ?>" target="_blank">
-						<?php echo trim($feed[$i]->title); ?></a></span>
+						<?php echo trim($feed[$i]->title); ?></a>
+						</span>
 					<?php else : ?>
-						<span class="feed-link"><?php echo trim($feed[$i]->title); ?></span>
+						<span><?php echo trim($feed[$i]->title); ?></span>
 					<?php endif; ?>
 					<?php if ($params->get('rssitemdate', 0)) : ?>
-						<div class="feed-item-date">
+						<div>
 							<?php echo JHtml::_('date', $feed[$i]->publishedDate, JText::_('DATE_FORMAT_LC3')); ?>
 						</div>
 					<?php endif; ?>
